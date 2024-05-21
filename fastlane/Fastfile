@@ -1,7 +1,29 @@
-lane :build do
+keystore_path = File.expand_path("../../keystore.jks", __FILE__)
+
+lane :build_apk do
   gradle(
     task: 'assemble',
     build_type: 'Release',
-    project_dir: 'pure-android/'
+    project_dir: 'pure-android/',
+    properties: {
+	"android.injected.signing.store.file" => keystore_path,
+	"android.injected.signing.store.password" => "123456",
+	"android.injected.signing.key.alias" => "mykey",
+	"android.injected.signing.key.password" => "123456",
+    }
+  )
+end
+
+lane :build_aab do
+  gradle(
+    task: 'bundle',
+    build_type: 'Release',
+    project_dir: 'pure-android/',
+    properties: {
+	"android.injected.signing.store.file" => keystore_path,
+	"android.injected.signing.store.password" => "123456",
+	"android.injected.signing.key.alias" => "mykey",
+	"android.injected.signing.key.password" => "123456",
+    }
   )
 end

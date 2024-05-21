@@ -17,7 +17,7 @@
     {
       devShells = forEachSupportedSystem ({ pkgs }: {
         default = pkgs.mkShell {
-          packages = with pkgs; [ nodejs typescript rbenv bundler fastlane bundletool ];
+          packages = with pkgs; [ nodejs typescript rbenv bundler fastlane bundletool apksigner ];
         };
       });
     };

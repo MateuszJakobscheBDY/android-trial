@@ -13,10 +13,18 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 # Available Actions
 
-### build
+### build_apk
 
 ```sh
-[bundle exec] fastlane build
+[bundle exec] fastlane build_apk
+```
+
+
+
+### build_aab
+
+```sh
+[bundle exec] fastlane build_aab
 ```
 
 
