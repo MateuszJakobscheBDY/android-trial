@@ -1,7 +1,7 @@
 - pipeline: "fastlane"
   on: "CLICK"
   refs:
-  - "refs/heads/main"
+  - "refs/heads/master"
   fail_on_prepare_env_warning: true
   actions:
   - action: "Execute bundle exec fastlane build"
@@ -25,4 +25,36 @@
     - "apt update && apt install -y openjdk-17-jdk wget unzip"
     - ""
     build_tool_version: "2.219.0"
+    shell: "BASH"
+- pipeline: "Android build"
+  events:
+  - type: "PUSH"
+    refs:
+    - "refs/heads/master"
+  fail_on_prepare_env_warning: true
+  actions:
+  - action: "./gradlew assembleRelease"
+    type: "BUILD"
+    docker_image_name: "library/openjdk"
+    docker_image_tag: "20"
+    execute_commands:
+    - "export ANDROID_HOME=\"/opt/android/sdk\""
+    - "export PATH=$PATH:/opt/android/sdk/cmdline-tools/tools/bin"
+    - "if [ ! -d \"$ANDROID_HOME/cmdline-tools\" ]; then"
+    - " curl -o sdk.zip https://dl.google.com/android/repository/commandlinetools-linux-7583922_latest.zip"
+    - " unzip sdk.zip"
+    - " rm sdk.zip"
+    - " mkdir \"$ANDROID_HOME/cmdline-tools\""
+    - " mv cmdline-tools \"$ANDROID_HOME/cmdline-tools/tools\""
+    - " yes | \"$ANDROID_HOME/cmdline-tools/tools/bin/sdkmanager\" --licenses"
+    - "fi"
+    - "cd pure-android"
+    - "chmod +x gradlew"
+    - "#./gradlew assembleDebug"
+    - "./gradlew assembleRelease"
+    setup_commands:
+    - "microdnf install unzip"
+    cached_dirs:
+    - "/root/.gradle"
+    - "/opt/android/sdk"
     shell: "BASH"
