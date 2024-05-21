@@ -27,9 +27,8 @@
     build_tool_version: "2.219.0"
     shell: "BASH"
 - pipeline: "Android build"
-  events:
-  - type: "CLICK"
-    refs:
+  on: "CLICK"
+  refs:
     - "refs/heads/master"
   fail_on_prepare_env_warning: true
   actions:
