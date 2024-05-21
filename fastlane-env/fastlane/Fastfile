@@ -2,6 +2,6 @@ lane :build do
   gradle(
     task: 'assemble',
     build_type: 'Release',
-    project_dir: 'pure-android/'
+    project_dir: '../pure-android/'
   )
 end
