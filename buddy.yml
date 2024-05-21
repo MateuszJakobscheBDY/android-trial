@@ -1,0 +1,28 @@
+- pipeline: "fastlane"
+  on: "CLICK"
+  refs:
+  - "refs/heads/main"
+  fail_on_prepare_env_warning: true
+  actions:
+  - action: "Execute bundle exec fastlane build"
+    type: "FASTLANE_ANDROID"
+    execute_commands:
+    - "export ANDROID_HOME=~/Android/Sdk"
+    - "export PATH=$PATH:~/Android/Sdk/cmdline-tools/latest/bin"
+    - "export PATH=$PATH:/opt/gradle/gradle-8.4/bin"
+    - "if [ ! -d ~/Android ]; then"
+    - "    wget https://dl.google.com/android/repository/commandlinetools-linux-7583922_latest.zip -O commandlinetools.zip"
+    - "    mkdir -p ~/Android/Sdk/cmdline-tools"
+    - "    unzip commandlinetools.zip -d ~/Android/Sdk/cmdline-tools"
+    - "    mv ~/Android/Sdk/cmdline-tools/cmdline-tools ~/Android/Sdk/cmdline-tools/latest"
+    - "    yes | sdkmanager --licenses"
+    - "    sdkmanager \"platform-tools\" \"platforms;android-30\" \"build-tools;30.0.3\""
+    - "fi"
+    - "cd fastlane-env"
+    - "bundle update --all"
+    - "bundle exec fastlane build"
+    setup_commands:
+    - "apt update && apt install -y openjdk-17-jdk wget unzip"
+    - ""
+    build_tool_version: "2.219.0"
+    shell: "BASH"
