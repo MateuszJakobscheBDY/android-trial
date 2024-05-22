@@ -1,6 +1,5 @@
 # Custom
 .gems/
-keystore.jks
 # Logs
 logs
 *.log
