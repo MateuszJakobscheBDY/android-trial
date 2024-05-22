@@ -1,7 +1,7 @@
 - pipeline: "Build and sign APK - Buddy"
   on: "CLICK"
   refs:
-  - "refs/heads/master"
+  - "*"
   fail_on_prepare_env_warning: true
   actions:
   - action: "build apk - gradlew"
@@ -41,7 +41,7 @@
 - pipeline: "Build and sign APK - Fastlane"
   on: "CLICK"
   refs:
-  - "refs/heads/master"
+  - "*"
   fail_on_prepare_env_warning: true
   actions:
   - action: "run fastlane"
@@ -67,7 +67,7 @@
 - pipeline: "Build and sign AAB - Buddy"
   on: "CLICK"
   refs:
-  - "refs/heads/master"
+  - "*"
   fail_on_prepare_env_warning: true
   actions:
   - action: "build aab - gradlew"
@@ -106,7 +106,7 @@
 - pipeline: "Build and sign AAB - Fastlane"
   on: "CLICK"
   refs:
-  - "refs/heads/master"
+  - "*"
   fail_on_prepare_env_warning: true
   actions:
   - action: "run fastlane"
