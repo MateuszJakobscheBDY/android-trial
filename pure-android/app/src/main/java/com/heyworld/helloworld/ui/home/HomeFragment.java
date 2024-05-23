@@ -1,4 +1,4 @@
-package com.example.helloworld.ui.home;
+package com.heyworld.helloworld.ui.home;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import com.example.helloworld.databinding.FragmentHomeBinding;
+import com.heyworld.helloworld.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {
 

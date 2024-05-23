@@ -1,4 +1,4 @@
-package com.example.helloworld.ui.slideshow;
+package com.heyworld.helloworld.ui.slideshow;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

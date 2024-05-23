@@ -1,4 +1,4 @@
-package com.example.helloworld.ui.gallery;
+package com.heyworld.helloworld.ui.gallery;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

@@ -1,4 +1,4 @@
-package com.example.helloworld;
+package com.heyworld.helloworld;
 
 import android.content.Context;
 import androidx.test.platform.app.InstrumentationRegistry;

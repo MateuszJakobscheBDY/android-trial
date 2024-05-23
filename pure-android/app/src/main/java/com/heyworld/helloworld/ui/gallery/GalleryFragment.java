@@ -1,4 +1,4 @@
-package com.example.helloworld.ui.gallery;
+package com.heyworld.helloworld.ui.gallery;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import com.example.helloworld.databinding.FragmentGalleryBinding;
+import com.heyworld.helloworld.databinding.FragmentGalleryBinding;
 
 public class GalleryFragment extends Fragment {
 
