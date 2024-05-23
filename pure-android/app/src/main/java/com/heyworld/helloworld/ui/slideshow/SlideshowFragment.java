@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import com.heyworld.helloworld.databinding.FragmentSlideshowBinding;
+import com.example.helloworld.databinding.FragmentSlideshowBinding;
 
 public class SlideshowFragment extends Fragment {
 
