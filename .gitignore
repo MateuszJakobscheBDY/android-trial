@@ -1,5 +1,7 @@
 # Custom
 .gems/
+pure-android/.idea/*
+pure-android/.gradle/*
 # Logs
 logs
 *.log
