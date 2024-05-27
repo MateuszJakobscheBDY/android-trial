@@ -1,39 +1,39 @@
 keystore_path = File.expand_path("../../keystore.jks", __FILE__)
-json_key_file = File.expand_path("../../api-codes.json", __FILE__)
+aab_file_path = File.expand_path("../../pure-android/app/build/outputs/bundle/release/app-release.aab", __FILE__)
+json_key_file_path = File.expand_path("../../api-codes.json", __FILE__)
+package_name = "com.heyworld.helloworld"
 
 lane :build_apk do
-	gradle(
-		task: 'assemble',
-		build_type: 'Release',
-		project_dir: 'pure-android/',
-		properties: {
-			"android.injected.signing.store.file" => keystore_path,
-			"android.injected.signing.store.password" => "123456",
-			"android.injected.signing.key.alias" => "mykey",
-			"android.injected.signing.key.password" => "123456",
-		}
-	)
+  gradle(
+    task: 'assemble',
+    build_type: 'Release',
+    project_dir: 'pure-android/',
+    properties: {
+      "android.injected.signing.store.file" => keystore_path,
+      "android.injected.signing.store.password" => "123456",
+      "android.injected.signing.key.alias" => "mykey",
+      "android.injected.signing.key.password" => "123456"
+    }
+  )
 end
 
 lane :build_aab do
-	gradle(
-		task: 'bundle',
-		build_type: 'Release',
-		project_dir: 'pure-android/',
-		properties: {
-			"android.injected.signing.store.file" => keystore_path,
-			"android.injected.signing.store.password" => "123456",
-			"android.injected.signing.key.alias" => "mykey",
-			"android.injected.signing.key.password" => "123456",
-		}
-	)
-end
-
-lane :publish
-	supply(
-		json_key: File.expand_path("../../api-codes.json", __FILE__),
-		package_name: "works.buddy.allaroundapp",
-		apk: "./build/outputs/apk/release/app-release.apk",
-		track: "internal"
-	)
+  gradle(
+    task: 'bundle',
+    build_type: 'Release',
+    project_dir: 'pure-android/',
+    properties: {
+      "android.injected.signing.store.file" => keystore_path,
+      "android.injected.signing.store.password" => "123456",
+      "android.injected.signing.key.alias" => "mykey",
+      "android.injected.signing.key.password" => "123456"
+    }
+  )
+  supply(
+    json_key: json_key_file_path,
+    package_name: package_name,
+    aab: aab_file_path,
+    track: "internal",
+	release_status: "draft"
+  )
 end
