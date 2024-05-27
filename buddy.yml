@@ -113,7 +113,7 @@
     - apk_path: "/app-release-signed (3).aab"
       main_expansion_path: ""
       patch_expansion_path: ""
-- pipeline: "Build and sign AAB - Fastlane"
+- pipeline: "Build sign and publish AAB - Fastlane"
   on: "CLICK"
   refs:
   - "refs/heads/*"
