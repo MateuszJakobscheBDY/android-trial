@@ -3,6 +3,7 @@
 fastlane/README.md
 fastlane/report.xml
 api-codes.json
+keystore.jks
 pure-android/.idea/*
 pure-android/.gradle/*
 
