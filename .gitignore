@@ -1,7 +1,11 @@
 # Custom
 .gems/
+fastlane/README.md
+fastlane/report.xml
+api-codes.json
 pure-android/.idea/*
 pure-android/.gradle/*
+
 # Logs
 logs
 *.log
