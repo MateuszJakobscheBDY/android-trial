@@ -133,7 +133,7 @@
     - " yes | \"$ANDROID_HOME/cmdline-tools/tools/bin/sdkmanager\" --licenses"
     - "fi"
     - "bundle update --all"
-    - "bundle exec fastlane build_apk"
+    - "bundle exec fastlane build_aab"
     setup_commands:
     - "apt update && apt install -y openjdk-17-jdk wget unzip"
     - ""
