@@ -1,17 +1,17 @@
 module Fastlane
   module Actions
     module SharedValues
-      BUILD_APPLICATION_CUSTOM_VALUE = :BUILD_APPLICATION_CUSTOM_VALUE
+      EXAMPLE_ACTION_CUSTOM_VALUE = :EXAMPLE_ACTION_CUSTOM_VALUE
     end
 
-    class BuildApplicationAction < Action
+    class ExampleActionAction < Action
       def self.run(params)
         # fastlane will take care of reading in the parameter and fetching the environment variable:
         UI.message("Parameter API Token: #{params[:api_token]}")
 
-        sh "shellcommand ./path"
+        # sh "shellcommand ./path"
 
-        # Actions.lane_context[SharedValues::BUILD_APPLICATION_CUSTOM_VALUE] = "my_val"
+        # Actions.lane_context[SharedValues::EXAMPLE_ACTION_CUSTOM_VALUE] = "my_val"
       end
 
       #####################################################
@@ -35,17 +35,17 @@ module Fastlane
         [
           FastlaneCore::ConfigItem.new(key: :api_token,
                                        # The name of the environment variable
-                                       env_name: 'FL_BUILD_APPLICATION_API_TOKEN',
+                                       env_name: 'FL_EXAMPLE_ACTION_API_TOKEN',
                                        # a short description of this parameter
-                                       description: 'API Token for BuildApplicationAction',
+                                       description: 'API Token for ExampleActionAction',
                                        verify_block: proc do |value|
                                          unless value && !value.empty?
-                                           UI.user_error!("No API token for BuildApplicationAction given, pass using `api_token: 'token'`")
+                                           UI.user_error!("No API token for ExampleActionAction given, pass using `api_token: 'token'`")
                                          end
                                          # UI.user_error!("Couldn't find file at path '#{value}'") unless File.exist?(value)
                                        end),
           FastlaneCore::ConfigItem.new(key: :development,
-                                       env_name: 'FL_BUILD_APPLICATION_DEVELOPMENT',
+                                       env_name: 'FL_EXAMPLE_ACTION_DEVELOPMENT',
                                        description: 'Create a development certificate instead of a distribution one',
                                        # true: verifies the input is a string, false: every kind of value
                                        is_string: false,
@@ -58,7 +58,7 @@ module Fastlane
         # Define the shared values you are going to provide
         # Example
         [
-          ['BUILD_APPLICATION_CUSTOM_VALUE', 'A description of what this value contains']
+          ['EXAMPLE_ACTION_CUSTOM_VALUE', 'A description of what this value contains']
         ]
       end
 

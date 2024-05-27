@@ -29,7 +29,7 @@ lane :build_aab do
 	)
 end
 
-lane :upload_to_play_store do
+lane :publish
 	supply(
 		json_key: File.expand_path("../../api-codes.json", __FILE__),
 		package_name: "works.buddy.allaroundapp",

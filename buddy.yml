@@ -4,7 +4,7 @@
   - "refs/heads/*"
   fail_on_prepare_env_warning: true
   actions:
-  - action: "build apk - gradlew"
+  - action: "build apk - gradle"
     type: "BUILD"
     docker_image_name: "library/openjdk"
     docker_image_tag: "20"
@@ -64,13 +64,13 @@
     - ""
     build_tool_version: "2.219.0"
     shell: "BASH"
-- pipeline: "Build and sign AAB - Buddy"
+- pipeline: "Build, sign and publish AAB - Buddy"
   on: "CLICK"
   refs:
   - "refs/heads/*"
   fail_on_prepare_env_warning: true
   actions:
-  - action: "build aab - gradlew"
+  - action: "build aab - gradle"
     type: "BUILD"
     docker_image_name: "library/openjdk"
     docker_image_tag: "20"
@@ -95,7 +95,7 @@
     - "/root/.gradle"
     - "/opt/android/sdk"
     shell: "BASH"
-  - action: "Sign Bundle"
+  - action: "sign aab - jarsigner"
     type: "ANDROID_SIGN_BUNDLE"
     local_path: "pure-android/app/build/outputs/bundle/release/app-release.aab"
     application_name: "app-release-signed.aab"
@@ -103,6 +103,16 @@
     key_password: "secure!R4AuzObkG1NyByt1gEzvMA==.KXe8nfDbNKRXSGZh1Tvi9Q=="
     keystore_password: "secure!R4AuzObkG1NyByt1gEzvMA==.KXe8nfDbNKRXSGZh1Tvi9Q=="
     key_alias: "mykey"
+  - action: "publish aab - google play"
+    type: "ANDROID_PUBLISH_APP_BUNDLE"
+    application_id: "com.heyworld.helloworld"
+    integration: "Google_Play_Store"
+    track: "internal"
+    draft: true
+    apk_files:
+    - apk_path: "/app-release-signed (3).aab"
+      main_expansion_path: ""
+      patch_expansion_path: ""
 - pipeline: "Build and sign AAB - Fastlane"
   on: "CLICK"
   refs:
